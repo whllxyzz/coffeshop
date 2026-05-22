@@ -83,7 +83,7 @@
             <div class="w-20 h-0.5 bg-amber-600 mx-auto mt-5 rounded-full"></div>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- 6 menu items sama seperti sebelumnya (saya singkat agar tidak terlalu panjang) -->
+            <!-- Menu 1 -->
             <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 card-menu overflow-hidden border border-stone-100">
                 <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Kopi Susu Senja" class="h-64 w-full object-cover">
                 <div class="p-5">
@@ -98,12 +98,70 @@
                     </div>
                 </div>
             </div>
-            <!-- Menu 2 sampai 6... (salin dari kode sebelumnya) -->
-            <!-- Agar tidak terlalu panjang, saya asumsikan menu lainnya sama. Dalam implementasi nyata, Anda bisa copy dari kode sebelumnya -->
+            <!-- Menu 2 -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 card-menu overflow-hidden border border-stone-100">
+                <img src="https://images.unsplash.com/photo-1485808191679-5f86510682a4?auto=format&fit=crop&w=600&q=80" alt="Iced Lychee Tea" class="h-64 w-full object-cover">
+                <div class="p-5">
+                    <h3 class="text-xl font-semibold text-stone-800">Iced Lychee Tea</h3>
+                    <p class="text-stone-500 text-sm mt-1">Lychee essence, green tea, lemon</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-bold text-amber-800">Rp22K</span>
+                        <button onclick="openOrderModal('Iced Lychee Tea', 22000)" class="bg-stone-800 hover:bg-amber-800 text-white px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition">Pesan</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu 3 -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 card-menu overflow-hidden border border-stone-100">
+                <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=80" alt="Matcha Latte" class="h-64 w-full object-cover">
+                <div class="p-5">
+                    <h3 class="text-xl font-semibold text-stone-800">Matcha Latte</h3>
+                    <p class="text-stone-500 text-sm mt-1">Premium matcha, oat milk, honey</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-bold text-amber-800">Rp28K</span>
+                        <button onclick="openOrderModal('Matcha Latte', 28000)" class="bg-stone-800 hover:bg-amber-800 text-white px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition">Pesan</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu 4 -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 card-menu overflow-hidden border border-stone-100">
+                <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80" alt="French Croissant" class="h-64 w-full object-cover">
+                <div class="p-5">
+                    <h3 class="text-xl font-semibold text-stone-800">French Croissant</h3>
+                    <p class="text-stone-500 text-sm mt-1">Butter pastry, almond slice</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-bold text-amber-800">Rp18K</span>
+                        <button onclick="openOrderModal('French Croissant', 18000)" class="bg-stone-800 hover:bg-amber-800 text-white px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition">Pesan</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu 5 -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 card-menu overflow-hidden border border-stone-100">
+                <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=600&q=80" alt="Nasi Goreng Spesial" class="h-64 w-full object-cover">
+                <div class="p-5">
+                    <h3 class="text-xl font-semibold text-stone-800">Nasi Goreng Spesial</h3>
+                    <p class="text-stone-500 text-sm mt-1">Ayam, telur, kerupuk, acar</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-bold text-amber-800">Rp32K</span>
+                        <button onclick="openOrderModal('Nasi Goreng Spesial', 32000)" class="bg-stone-800 hover:bg-amber-800 text-white px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition">Pesan</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu 6 -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 card-menu overflow-hidden border border-stone-100">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80" alt="Classic Waffle" class="h-64 w-full object-cover">
+                <div class="p-5">
+                    <h3 class="text-xl font-semibold text-stone-800">Classic Waffle</h3>
+                    <p class="text-stone-500 text-sm mt-1">Vanilla ice cream, maple syrup</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-bold text-amber-800">Rp23K</span>
+                        <button onclick="openOrderModal('Classic Waffle', 23000)" class="bg-stone-800 hover:bg-amber-800 text-white px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition">Pesan</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- MODAL PEMESANAN (sama seperti sebelumnya) -->
+    <!-- MODAL PEMESANAN + INPUT NAMA PEMESAN -->
     <div id="orderModal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-stone-900/60 backdrop-blur-sm p-4 transition-all">
         <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl modal-card">
             <div class="p-6 lg:p-7">
@@ -140,7 +198,13 @@
                         <span id="totalPriceDisplay" class="font-bold text-2xl text-amber-800">Rp0</span>
                     </div>
                 </div>
-                <div class="mt-6">
+                <!-- INPUT NAMA PEMESAN (sesuai permintaan) -->
+                <div class="mt-5">
+                    <label class="block text-sm font-semibold text-stone-700 mb-1">Nama Pemesan</label>
+                    <input type="text" id="customerNameInput" placeholder="Contoh: Will, Putri, atau nama panggilan" class="w-full border border-stone-300 rounded-xl px-4 py-2.5 text-stone-800 focus:outline-none focus:ring-2 focus:ring-amber-500 transition" autocomplete="off">
+                    <p class="text-xs text-stone-400 mt-1">⚠️ Nama akan ditampilkan di notifikasi Telegram kasir</p>
+                </div>
+                <div class="mt-4">
                     <p class="text-sm font-semibold text-stone-700 mb-3">Pilih metode pembayaran</p>
                     <div class="grid grid-cols-3 gap-3">
                         <div data-method="qris" class="method-card flex flex-col items-center p-3 rounded-xl cursor-pointer border active border-amber-500 bg-amber-50">
@@ -166,7 +230,7 @@
         </div>
     </div>
 
-    <!-- ADMIN PANEL -->
+    <!-- ADMIN PANEL (tanpa merubah inti) -->
     <div id="adminPanel" class="hidden fixed inset-0 z-[70] bg-stone-900/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white max-w-3xl w-full rounded-2xl p-6 modal-card max-h-[85vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b pb-3">
@@ -179,7 +243,7 @@
                 <p class="text-xs text-stone-600 mt-1">Notifikasi akan dikirim ke chat ID tersebut. Admin bisa konfirmasi pesanan langsung dari Telegram.</p>
             </div>
             <div class="mt-6">
-                <h4 class="font-semibold">📋 Semua Pesanan</h4>
+                <h4 class="font-semibold">📋 Semua Pesanan (dengan Nama Pemesan)</h4>
                 <div id="ordersListContainer" class="mt-3 space-y-3 max-h-96 overflow-y-auto"></div>
             </div>
         </div>
@@ -219,6 +283,7 @@
         const orderNumberSpan = document.getElementById('orderNumberDisplay');
         const orderTimeSpan = document.getElementById('orderTimeDisplay');
         const confirmOrderBtn = document.getElementById('confirmOrderBtn');
+        const customerNameInput = document.getElementById('customerNameInput');
         
         function generateOrderId() {
             return 'TKJ-' + Date.now().toString(36).toUpperCase() + Math.floor(Math.random() * 1000);
@@ -232,8 +297,12 @@
         async function sendTelegramNotification(order) {
             if (!telegramChatId) return;
             const confirmUrl = `${window.location.origin}${window.location.pathname}?confirm=${order.id}&action=confirm`;
+            // Format pesan dengan nama pemesan (sesuai permintaan: "Hai Will, ada pesanan nih dari ...")
+            const customer = order.customerName || "Pelanggan";
             const message = `🆕 *PESANAN BARU* 🆕\n\n` +
+                `🍽️ *Hai ${customer}, ada pesanan nih dari ${customer}!* 🍽️\n\n` +
                 `📋 *No Pesanan:* ${order.id}\n` +
+                `👤 *Nama Pemesan:* ${customer}\n` +
                 `🍽 *Item:* ${order.item}\n` +
                 `🔢 *Jumlah:* ${order.qty}\n` +
                 `💰 *Total:* Rp ${order.total.toLocaleString('id-ID')}\n` +
@@ -266,7 +335,6 @@
             renderOrdersList();
         }
         
-        // Fungsi konfirmasi dengan auto close tab
         function confirmOrderById(orderId, isAutoClose = true) {
             const idx = orders.findIndex(o => o.id === orderId);
             if (idx !== -1 && orders[idx].status !== 'confirmed') {
@@ -274,16 +342,10 @@
                 orders[idx].confirmedAt = new Date().toLocaleString();
                 localStorage.setItem('xtkj_orders', JSON.stringify(orders));
                 renderOrdersList();
-                
-                // Tampilkan notifikasi singkat (toast) sebelum menutup
                 showToast('✅ Pesanan dikonfirmasi!');
-                
                 if (isAutoClose) {
-                    // Tunggu 1.5 detik lalu tutup tab (jika memungkinkan)
                     setTimeout(() => {
-                        // Coba close window
                         window.close();
-                        // Jika gagal close, setidaknya redirect ke halaman utama dengan parameter clear
                         if (!window.closed) {
                             window.location.href = window.location.pathname;
                         }
@@ -318,7 +380,7 @@
                 let statusText = '';
                 if (order.status === 'confirmed') {
                     statusBadge = 'bg-green-100 text-green-700';
-                    statusText = '✓ Diterima - Silakan tunggu sebentar';
+                    statusText = '✓ Diterima';
                 } else {
                     statusBadge = 'bg-yellow-100 text-yellow-700';
                     statusText = '⏳ Pending';
@@ -332,7 +394,8 @@
                             </div>
                             <span class="text-xs text-stone-400">${order.time}</span>
                         </div>
-                        <p class="text-sm mt-1">${order.item} x${order.qty} - Rp ${order.total.toLocaleString('id-ID')}</p>
+                        <p class="text-sm mt-1 font-medium text-stone-700">👤 ${order.customerName || 'Tidak ada nama'}</p>
+                        <p class="text-sm">${order.item} x${order.qty} - Rp ${order.total.toLocaleString('id-ID')}</p>
                         <p class="text-xs text-stone-500">Metode: ${order.method}</p>
                         ${order.status !== 'confirmed' ? `<button onclick="manualConfirm('${order.id}')" class="mt-2 text-xs bg-amber-600 text-white px-3 py-1 rounded-full">Konfirmasi Manual</button>` : ''}
                     </div>
@@ -340,12 +403,19 @@
             }).join('');
         }
         
-        window.manualConfirm = function(id) { confirmOrderById(id, false); }; // manual tidak auto close
+        window.manualConfirm = function(id) { confirmOrderById(id, false); };
         
         function finalizeOrder() {
+            const customerNameRaw = customerNameInput ? customerNameInput.value.trim() : '';
+            if (customerNameRaw === '') {
+                alert('⚠️ Mohon isi nama pemesan terlebih dahulu agar kasir dapat menghubungi Anda.');
+                customerNameInput.focus();
+                return;
+            }
             const total = currentItem.price * currentQty;
             const newOrder = {
                 id: generateOrderId(),
+                customerName: customerNameRaw,
                 item: currentItem.name,
                 qty: currentQty,
                 total: total,
@@ -370,7 +440,8 @@
                     <div class="my-5 bg-stone-50 p-4 rounded-xl">
                         <p class="text-xs text-stone-500 uppercase tracking-wide">Nomor Resi</p>
                         <p class="text-2xl font-mono font-bold text-amber-800">${order.id}</p>
-                        <p class="text-sm mt-2">${order.item} x${order.qty} | Total Rp ${order.total.toLocaleString('id-ID')}</p>
+                        <p class="text-sm mt-2">👤 ${order.customerName}</p>
+                        <p class="text-sm">${order.item} x${order.qty} | Total Rp ${order.total.toLocaleString('id-ID')}</p>
                         <p class="text-xs text-stone-500 mt-1">Metode: ${order.method}</p>
                     </div>
                     <p class="text-sm text-stone-600">Notifikasi telah dikirim ke Telegram kasir. Silakan tunggu konfirmasi dari pihak cafe.</p>
@@ -388,6 +459,7 @@
             orderNumberSpan.innerText = generateOrderId();
             orderTimeSpan.innerText = new Date().toLocaleTimeString();
             updateTotalUI();
+            if (customerNameInput) customerNameInput.value = '';
             orderModal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
@@ -399,8 +471,8 @@
         
         document.querySelectorAll('[data-method]').forEach(el => {
             el.addEventListener('click', () => {
-                document.querySelectorAll('[data-method]').forEach(c => c.classList.remove('active'));
-                el.classList.add('active');
+                document.querySelectorAll('[data-method]').forEach(c => c.classList.remove('active', 'border-amber-500', 'bg-amber-50'));
+                el.classList.add('active', 'border-amber-500', 'bg-amber-50');
                 selectedMethod = el.getAttribute('data-method');
             });
         });
@@ -409,11 +481,9 @@
         document.getElementById('adminPanelBtn')?.addEventListener('click', () => { renderOrdersList(); adminPanel.classList.remove('hidden'); });
         document.getElementById('mobileAdminBtn')?.addEventListener('click', () => { renderOrdersList(); adminPanel.classList.remove('hidden'); });
         
-        // Tangani konfirmasi dari URL (Telegram) dengan auto-close
         const urlParams = new URLSearchParams(window.location.search);
         const confirmId = urlParams.get('confirm');
         if (confirmId && urlParams.get('action') === 'confirm') {
-            // Jalankan konfirmasi dan tutup tab otomatis
             confirmOrderById(confirmId, true);
         }
         
@@ -422,11 +492,6 @@
         mobileMenuBtn?.addEventListener('click', () => mobileDropdown.classList.toggle('hidden'));
         
         renderOrdersList();
-        
-        // Jika halaman ini adalah hasil konfirmasi, kita sembunyikan konten utama biar fokus ke auto-close
-        if (confirmId && urlParams.get('action') === 'confirm') {
-            // Bisa tambahkan style agar body redup sebentar? Tidak perlu
-        }
     </script>
 </body>
 </html>
