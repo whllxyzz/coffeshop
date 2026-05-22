@@ -1,38 +1,66 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>X TKJ 1 | Konfirmasi Pesanan - Auto Close</title>
+    <title>X TKJ 1 | Elegant Coffee & Eatery</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #FCF9F4; color: #2C2418; }
+        body { font-family: 'Inter', sans-serif; background: #FAF7F2; color: #2A2418; scroll-behavior: smooth; }
         .font-serif { font-family: 'Playfair Display', serif; }
-        .hero-bg { background: linear-gradient(107deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.5) 100%), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center 30%; }
-        @keyframes marqueeAnim { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-        .marquee-text { animation: marqueeAnim 24s linear infinite; white-space: nowrap; display: inline-block; }
-        .glass-nav { background: rgba(255, 255, 245, 0.86); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .card-menu { transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
-        .card-menu:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12); }
-        .method-card { transition: all 0.2s ease; border: 1px solid #e7e5e0; cursor: pointer; }
-        .method-card.active { border-color: #B45309; background-color: #FFF7ED; box-shadow: 0 2px 8px rgba(180, 83, 9, 0.08); }
-        .modal-card { animation: fadeSlideUp 0.25s ease-out; }
-        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Hero background tetap foto AI/Unsplash (suasana cafe) */
+        .hero-glow {
+            background: linear-gradient(107deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.5) 100%), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center 25%;
+        }
+        .glass-nav {
+            background: rgba(255, 250, 240, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+        .menu-card {
+            transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
+        }
+        .menu-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.2);
+        }
+        .method-card {
+            transition: all 0.2s ease;
+            border: 1px solid #e9e5de;
+            cursor: pointer;
+        }
+        .method-card.active {
+            border-color: #C27A3E;
+            background: #FEF7E6;
+            box-shadow: 0 4px 12px rgba(194, 122, 62, 0.1);
+        }
+        .modal-card {
+            animation: fadeSlideUp 0.3s ease-out;
+        }
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         .auto-close-toast {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #2C2418;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 12px;
+            bottom: 24px;
+            right: 24px;
+            background: #2A2418;
+            color: #FFFAF0;
+            padding: 12px 24px;
+            border-radius: 40px;
             z-index: 1000;
             font-size: 14px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            animation: fadeInOut 2s ease;
+            font-weight: 500;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            animation: fadeInOut 2.2s ease;
         }
         @keyframes fadeInOut {
             0% { opacity: 0; transform: translateY(20px); }
@@ -40,17 +68,41 @@
             85% { opacity: 1; transform: translateY(0); }
             100% { opacity: 0; transform: translateY(-20px); }
         }
+        .marquee-text {
+            animation: marqueeAnim 22s linear infinite;
+            white-space: nowrap;
+            display: inline-block;
+        }
+        @keyframes marqueeAnim {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #C27A3E;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav">
-        <div class="max-w-6xl mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold tracking-tight text-stone-800 font-serif">X TKJ 1</a>
-            <div class="hidden md:flex gap-10 text-stone-600 font-medium">
-                <a href="#menu" class="hover:text-amber-800 transition">Menu</a>
-                <a href="#kontak" class="hover:text-amber-800 transition">Kontak</a>
-                <button id="adminPanelBtn" class="hover:text-amber-800 transition">Admin</button>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Dua logo pojokan (kolase) sesuai permintaan -->
+            <div class="flex items-center gap-2">
+                <img src="https://i.ibb.co/SDRnxRcX/tkj-logo.jpg" alt="TKJ Logo" class="w-10 h-10 object-cover rounded-full border border-amber-200 shadow-sm">
+                <img src="https://i.ibb.co/6j3pj4S/pp-smkn.jpg" alt="SMKN Logo" class="w-10 h-10 object-cover rounded-full border border-amber-200 shadow-sm">
+                <a href="#" class="text-2xl font-bold tracking-tight text-stone-800 font-serif ml-2">X TKJ 1</a>
+            </div>
+            <div class="hidden md:flex gap-8 text-stone-600 font-medium">
+                <a href="#menu" class="hover:text-amber-700 transition duration-200">Menu</a>
+                <a href="#kontak" class="hover:text-amber-700 transition duration-200">Kontak</a>
+                <button id="adminPanelBtn" class="hover:text-amber-700 transition duration-200">Admin</button>
             </div>
             <button id="mobileMenuBtn" class="md:hidden text-stone-700">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" /></svg>
@@ -63,116 +115,134 @@
         </div>
     </nav>
 
-    <div class="fixed top-[68px] w-full z-40 bg-stone-800 text-stone-100 py-2.5 overflow-hidden whitespace-nowrap text-sm tracking-wide shadow-sm">
+    <!-- Marquee Promo -->
+    <div class="fixed top-[68px] w-full z-40 bg-stone-800/90 backdrop-blur-sm text-amber-50 py-2.5 overflow-hidden whitespace-nowrap text-sm tracking-wide shadow-md">
         <div class="marquee-text font-medium">
             <span class="mx-4">✦</span> Selamat datang di X TKJ 1 — Pesan online & dapatkan resi digital <span class="mx-4">✦</span> Promo: diskon 15% setiap Senin <span class="mx-4">✦</span> Free topping untuk pembelian 2 minuman
         </div>
     </div>
 
-    <section class="hero-bg h-screen flex items-center justify-center text-center text-white px-6">
-        <div class="max-w-3xl">
-            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-5 font-serif">Tempat Menemukan<br>Ketenangan</h1>
-            <p class="text-lg md:text-xl opacity-90 max-w-xl mx-auto mb-9 font-light">Nikmati kopi terbaik dan hidangan spesial. Pesan digital, dapatkan nomor antrian eksklusif.</p>
-            <a href="#menu" class="inline-block bg-amber-700 hover:bg-amber-800 text-white font-semibold px-9 py-4 rounded-full transition-all duration-300 hover:scale-[1.02] shadow-xl">Lihat Menu</a>
+    <!-- Hero Section dengan foto AI (cafe) -->
+    <section class="hero-glow h-screen flex items-center justify-center text-center text-white px-6 relative">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="max-w-3xl relative z-10">
+            <span class="text-amber-300 tracking-widest text-sm font-semibold uppercase">—— Sejak 2026 ——</span>
+            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-5 font-serif mt-3">Tempat Menemukan<br>Ketenangan</h1>
+            <p class="text-lg md:text-xl opacity-95 max-w-xl mx-auto mb-9 font-light">Nikmati kopi terbaik dan hidangan spesial dalam suasana yang hangat.</p>
+            <a href="#menu" class="inline-block bg-amber-700 hover:bg-amber-800 text-white font-semibold px-9 py-4 rounded-full transition-all duration-300 hover:scale-[1.02] shadow-2xl">Lihat Menu</a>
         </div>
     </section>
 
-    <section id="menu" class="py-24 px-6 max-w-6xl mx-auto">
-        <div class="text-center mb-14">
-            <span class="text-amber-700 uppercase tracking-widest text-sm font-semibold">— Signature Selection —</span>
-            <h2 class="text-4xl md:text-5xl font-serif text-stone-800 mt-2">Menu Andalan</h2>
-            <div class="w-20 h-0.5 bg-amber-600 mx-auto mt-5 rounded-full"></div>
+    <!-- Menu Section (lengkap dengan gambar produk) -->
+    <section id="menu" class="py-28 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-amber-700 uppercase tracking-[0.2em] text-sm font-semibold">— Signature Selection —</span>
+            <h2 class="text-4xl md:text-5xl font-serif text-stone-800 mt-3 section-title">Menu Andalan</h2>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Menu 1 -->
-            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 card-menu overflow-hidden border border-stone-100">
-                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Kopi Susu Senja" class="h-64 w-full object-cover">
-                <div class="p-5">
-                    <h3 class="text-xl font-semibold text-stone-800">Kopi Susu Senja</h3>
-                    <p class="text-stone-500 text-sm mt-1">Espresso, steamed milk, caramel velvet</p>
-                    <div class="flex justify-between items-center mt-4">
-                        <span class="text-2xl font-bold text-amber-800">Rp25K</span>
-                        <button onclick="openOrderModal('Kopi Susu Senja', 25000)" class="bg-stone-800 hover:bg-amber-800 text-white px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
-                            Pesan
-                        </button>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- 6 menu items dengan gambar stabil (sama seperti sebelumnya) -->
+            <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 menu-card overflow-hidden border border-stone-100">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Kopi Susu Senja" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/600x400?text=Kopi+Susu+Senja'">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-stone-800 font-serif">Kopi Susu Senja</h3>
+                            <p class="text-stone-500 text-sm mt-1">Espresso, steamed milk, caramel velvet</p>
+                        </div>
+                        <span class="text-2xl font-bold text-amber-700">Rp25K</span>
                     </div>
+                    <button onclick="openOrderModal('Kopi Susu Senja', 25000)" class="mt-5 w-full bg-stone-800 hover:bg-amber-700 text-white py-3 rounded-full text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300">Pesan Sekarang</button>
                 </div>
             </div>
-            <!-- Menu 2 -->
-            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 card-menu overflow-hidden border border-stone-100">
-                <img src="https://images.unsplash.com/photo-1485808191679-5f86510682a4?auto=format&fit=crop&w=600&q=80" alt="Iced Lychee Tea" class="h-64 w-full object-cover">
-                <div class="p-5">
-                    <h3 class="text-xl font-semibold text-stone-800">Iced Lychee Tea</h3>
-                    <p class="text-stone-500 text-sm mt-1">Lychee essence, green tea, lemon</p>
-                    <div class="flex justify-between items-center mt-4">
-                        <span class="text-2xl font-bold text-amber-800">Rp22K</span>
-                        <button onclick="openOrderModal('Iced Lychee Tea', 22000)" class="bg-stone-800 hover:bg-amber-800 text-white px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition">Pesan</button>
+            <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 menu-card overflow-hidden border border-stone-100">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80" alt="Iced Lychee Tea" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/600x400?text=Iced+Lychee+Tea'">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-stone-800 font-serif">Iced Lychee Tea</h3>
+                            <p class="text-stone-500 text-sm mt-1">Lychee essence, green tea, lemon</p>
+                        </div>
+                        <span class="text-2xl font-bold text-amber-700">Rp22K</span>
                     </div>
+                    <button onclick="openOrderModal('Iced Lychee Tea', 22000)" class="mt-5 w-full bg-stone-800 hover:bg-amber-700 text-white py-3 rounded-full text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300">Pesan Sekarang</button>
                 </div>
             </div>
-            <!-- Menu 3 -->
-            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 card-menu overflow-hidden border border-stone-100">
-                <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=80" alt="Matcha Latte" class="h-64 w-full object-cover">
-                <div class="p-5">
-                    <h3 class="text-xl font-semibold text-stone-800">Matcha Latte</h3>
-                    <p class="text-stone-500 text-sm mt-1">Premium matcha, oat milk, honey</p>
-                    <div class="flex justify-between items-center mt-4">
-                        <span class="text-2xl font-bold text-amber-800">Rp28K</span>
-                        <button onclick="openOrderModal('Matcha Latte', 28000)" class="bg-stone-800 hover:bg-amber-800 text-white px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition">Pesan</button>
+            <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 menu-card overflow-hidden border border-stone-100">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Matcha Latte" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/600x400?text=Matcha+Latte'">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-stone-800 font-serif">Matcha Latte</h3>
+                            <p class="text-stone-500 text-sm mt-1">Premium matcha, oat milk, honey</p>
+                        </div>
+                        <span class="text-2xl font-bold text-amber-700">Rp28K</span>
                     </div>
+                    <button onclick="openOrderModal('Matcha Latte', 28000)" class="mt-5 w-full bg-stone-800 hover:bg-amber-700 text-white py-3 rounded-full text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300">Pesan Sekarang</button>
                 </div>
             </div>
-            <!-- Menu 4 -->
-            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 card-menu overflow-hidden border border-stone-100">
-                <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80" alt="French Croissant" class="h-64 w-full object-cover">
-                <div class="p-5">
-                    <h3 class="text-xl font-semibold text-stone-800">French Croissant</h3>
-                    <p class="text-stone-500 text-sm mt-1">Butter pastry, almond slice</p>
-                    <div class="flex justify-between items-center mt-4">
-                        <span class="text-2xl font-bold text-amber-800">Rp18K</span>
-                        <button onclick="openOrderModal('French Croissant', 18000)" class="bg-stone-800 hover:bg-amber-800 text-white px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition">Pesan</button>
+            <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 menu-card overflow-hidden border border-stone-100">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="French Croissant" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/600x400?text=French+Croissant'">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-stone-800 font-serif">French Croissant</h3>
+                            <p class="text-stone-500 text-sm mt-1">Butter pastry, almond slice</p>
+                        </div>
+                        <span class="text-2xl font-bold text-amber-700">Rp18K</span>
                     </div>
+                    <button onclick="openOrderModal('French Croissant', 18000)" class="mt-5 w-full bg-stone-800 hover:bg-amber-700 text-white py-3 rounded-full text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300">Pesan Sekarang</button>
                 </div>
             </div>
-            <!-- Menu 5 -->
-            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 card-menu overflow-hidden border border-stone-100">
-                <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=600&q=80" alt="Nasi Goreng Spesial" class="h-64 w-full object-cover">
-                <div class="p-5">
-                    <h3 class="text-xl font-semibold text-stone-800">Nasi Goreng Spesial</h3>
-                    <p class="text-stone-500 text-sm mt-1">Ayam, telur, kerupuk, acar</p>
-                    <div class="flex justify-between items-center mt-4">
-                        <span class="text-2xl font-bold text-amber-800">Rp32K</span>
-                        <button onclick="openOrderModal('Nasi Goreng Spesial', 32000)" class="bg-stone-800 hover:bg-amber-800 text-white px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition">Pesan</button>
+            <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 menu-card overflow-hidden border border-stone-100">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80" alt="Nasi Goreng Spesial" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/600x400?text=Nasi+Goreng+Spesial'">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-stone-800 font-serif">Nasi Goreng Spesial</h3>
+                            <p class="text-stone-500 text-sm mt-1">Ayam, telur, kerupuk, acar</p>
+                        </div>
+                        <span class="text-2xl font-bold text-amber-700">Rp32K</span>
                     </div>
+                    <button onclick="openOrderModal('Nasi Goreng Spesial', 32000)" class="mt-5 w-full bg-stone-800 hover:bg-amber-700 text-white py-3 rounded-full text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300">Pesan Sekarang</button>
                 </div>
             </div>
-            <!-- Menu 6 -->
-            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 card-menu overflow-hidden border border-stone-100">
-                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80" alt="Classic Waffle" class="h-64 w-full object-cover">
-                <div class="p-5">
-                    <h3 class="text-xl font-semibold text-stone-800">Classic Waffle</h3>
-                    <p class="text-stone-500 text-sm mt-1">Vanilla ice cream, maple syrup</p>
-                    <div class="flex justify-between items-center mt-4">
-                        <span class="text-2xl font-bold text-amber-800">Rp23K</span>
-                        <button onclick="openOrderModal('Classic Waffle', 23000)" class="bg-stone-800 hover:bg-amber-800 text-white px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition">Pesan</button>
+            <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 menu-card overflow-hidden border border-stone-100">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80" alt="Classic Waffle" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/600x400?text=Classic+Waffle'">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-stone-800 font-serif">Classic Waffle</h3>
+                            <p class="text-stone-500 text-sm mt-1">Vanilla ice cream, maple syrup</p>
+                        </div>
+                        <span class="text-2xl font-bold text-amber-700">Rp23K</span>
                     </div>
+                    <button onclick="openOrderModal('Classic Waffle', 23000)" class="mt-5 w-full bg-stone-800 hover:bg-amber-700 text-white py-3 rounded-full text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300">Pesan Sekarang</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MODAL PEMESANAN + INPUT NAMA PEMESAN -->
-    <div id="orderModal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-stone-900/60 backdrop-blur-sm p-4 transition-all">
-        <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl modal-card">
+    <!-- MODAL PEMESANAN (sama persis) -->
+    <div id="orderModal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-stone-900/50 backdrop-blur-md p-4 transition-all">
+        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl modal-card">
             <div class="p-6 lg:p-7">
                 <div class="flex justify-between items-center border-b border-stone-200 pb-4">
                     <h3 class="text-2xl font-serif font-bold text-stone-800">Detail Pesanan</h3>
-                    <button onclick="closeOrderModal()" class="text-stone-400 hover:text-stone-700">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                    </button>
+                    <button onclick="closeOrderModal()" class="text-stone-400 hover:text-stone-700"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
                 </div>
-                <div class="mt-5 bg-amber-50/60 p-4 rounded-xl border border-amber-100">
+                <div class="mt-5 bg-amber-50/70 p-4 rounded-2xl border border-amber-100">
                     <div class="flex justify-between items-center">
                         <span class="text-xs font-semibold text-amber-800 uppercase tracking-wide">Nomor Pesanan</span>
                         <span id="orderNumberDisplay" class="font-mono text-xl font-bold text-amber-900">TKJ-000000</span>
@@ -199,7 +269,6 @@
                         <span id="totalPriceDisplay" class="font-bold text-2xl text-amber-800">Rp0</span>
                     </div>
                 </div>
-                <!-- INPUT NAMA PEMESAN (sesuai permintaan) -->
                 <div class="mt-5">
                     <label class="block text-sm font-semibold text-stone-700 mb-1">Nama Pemesan</label>
                     <input type="text" id="customerNameInput" placeholder="Contoh: Will, Putri, atau nama panggilan" class="w-full border border-stone-300 rounded-xl px-4 py-2.5 text-stone-800 focus:outline-none focus:ring-2 focus:ring-amber-500 transition" autocomplete="off">
@@ -231,9 +300,9 @@
         </div>
     </div>
 
-    <!-- ADMIN PANEL (tanpa merubah inti) -->
+    <!-- ADMIN PANEL -->
     <div id="adminPanel" class="hidden fixed inset-0 z-[70] bg-stone-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white max-w-3xl w-full rounded-2xl p-6 modal-card max-h-[85vh] overflow-y-auto">
+        <div class="bg-white max-w-3xl w-full rounded-3xl p-6 modal-card max-h-[85vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b pb-3">
                 <h3 class="text-xl font-serif font-bold text-stone-800">Panel Admin - Daftar Pesanan</h3>
                 <button onclick="closeAdminPanel()" class="text-stone-400 hover:text-stone-700"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
@@ -263,7 +332,7 @@
     </footer>
 
     <script>
-        // ======================= KONFIGURASI =======================
+        // ======================= KONFIGURASI (TIDAK BERUBAH) =======================
         const BOT_TOKEN = '8540115519:AAHiN_82SRyDuLbQ8cYnAus3cler95AO6Fc';
         const DEFAULT_CHAT_ID = '7577331454';
         
@@ -273,7 +342,6 @@
         let currentQty = 1;
         let orders = JSON.parse(localStorage.getItem('xtkj_orders') || '[]');
         
-        // DOM elements
         const orderModal = document.getElementById('orderModal');
         const adminPanel = document.getElementById('adminPanel');
         const modalItemName = document.getElementById('modalItemName');
@@ -298,7 +366,6 @@
         async function sendTelegramNotification(order) {
             if (!telegramChatId) return;
             const confirmUrl = `${window.location.origin}${window.location.pathname}?confirm=${order.id}&action=confirm`;
-            // Format pesan dengan nama pemesan (sesuai permintaan: "Hai Will, ada pesanan nih dari ...")
             const customer = order.customerName || "Pelanggan";
             const message = `🆕 *PESANAN BARU* 🆕\n\n` +
                 `🍽️ *Hai ${customer}, ada pesanan nih dari ${customer}!* 🍽️\n\n` +
@@ -366,7 +433,7 @@
             toast.className = 'auto-close-toast';
             toast.innerText = message;
             document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2000);
+            setTimeout(() => toast.remove(), 2200);
         }
         
         function renderOrdersList() {
@@ -377,8 +444,7 @@
                 return;
             }
             container.innerHTML = orders.map(order => {
-                let statusBadge = '';
-                let statusText = '';
+                let statusBadge = '', statusText = '';
                 if (order.status === 'confirmed') {
                     statusBadge = 'bg-green-100 text-green-700';
                     statusText = '✓ Diterima';
