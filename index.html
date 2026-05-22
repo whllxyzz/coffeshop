@@ -11,7 +11,6 @@
         body { font-family: 'Inter', sans-serif; background: #FAF7F2; color: #2A2418; scroll-behavior: smooth; }
         .font-serif { font-family: 'Playfair Display', serif; }
         
-        /* Hero background tetap foto AI/Unsplash (suasana cafe) */
         .hero-glow {
             background: linear-gradient(107deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.5) 100%), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
@@ -93,10 +92,12 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- Dua logo pojokan (kolase) sesuai permintaan -->
+            <!-- Dua logo pojokan + fallback jika gambar gagal load -->
             <div class="flex items-center gap-2">
-                <img src="https://i.ibb.co/SDRnxRcX/tkj-logo.jpg" alt="TKJ Logo" class="w-10 h-10 object-cover rounded-full border border-amber-200 shadow-sm">
-                <img src="https://i.ibb.co/6j3pj4S/pp-smkn.jpg" alt="SMKN Logo" class="w-10 h-10 object-cover rounded-full border border-amber-200 shadow-sm">
+                <img src="https://i.ibb.co/SDRnxRcX/tkj-logo.jpg" alt="TKJ Logo" class="w-10 h-10 object-cover rounded-full border border-amber-200 shadow-sm" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=TKJ'">
+                <img src="https://i.ibb.co/6j3pj4S/pp-smkn.jpg" alt="SMKN Logo" class="w-10 h-10 object-cover rounded-full border border-amber-200 shadow-sm" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=SMKN'">
                 <a href="#" class="text-2xl font-bold tracking-tight text-stone-800 font-serif ml-2">X TKJ 1</a>
             </div>
             <div class="hidden md:flex gap-8 text-stone-600 font-medium">
@@ -122,7 +123,7 @@
         </div>
     </div>
 
-    <!-- Hero Section dengan foto AI (cafe) -->
+    <!-- Hero Section (tetap foto AI) -->
     <section class="hero-glow h-screen flex items-center justify-center text-center text-white px-6 relative">
         <div class="absolute inset-0 bg-black/30"></div>
         <div class="max-w-3xl relative z-10">
@@ -133,14 +134,14 @@
         </div>
     </section>
 
-    <!-- Menu Section (lengkap dengan gambar produk) -->
+    <!-- Menu Section (sama seperti sebelumnya) -->
     <section id="menu" class="py-28 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-16">
             <span class="text-amber-700 uppercase tracking-[0.2em] text-sm font-semibold">— Signature Selection —</span>
             <h2 class="text-4xl md:text-5xl font-serif text-stone-800 mt-3 section-title">Menu Andalan</h2>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <!-- 6 menu items dengan gambar stabil (sama seperti sebelumnya) -->
+            <!-- 6 menu items (sama persis, tidak diubah) -->
             <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 menu-card overflow-hidden border border-stone-100">
                 <div class="relative overflow-hidden h-72">
                     <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Kopi Susu Senja" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/600x400?text=Kopi+Susu+Senja'">
@@ -234,7 +235,7 @@
         </div>
     </section>
 
-    <!-- MODAL PEMESANAN (sama persis) -->
+    <!-- MODAL PEMESANAN (sama persis, tidak berubah) -->
     <div id="orderModal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-stone-900/50 backdrop-blur-md p-4 transition-all">
         <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl modal-card">
             <div class="p-6 lg:p-7">
@@ -300,7 +301,7 @@
         </div>
     </div>
 
-    <!-- ADMIN PANEL -->
+    <!-- ADMIN PANEL (sama) -->
     <div id="adminPanel" class="hidden fixed inset-0 z-[70] bg-stone-900/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white max-w-3xl w-full rounded-3xl p-6 modal-card max-h-[85vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b pb-3">
