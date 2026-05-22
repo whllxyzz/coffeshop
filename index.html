@@ -10,7 +10,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #FAF7F2; color: #2A2418; scroll-behavior: smooth; }
         .font-serif { font-family: 'Playfair Display', serif; }
-        
         .hero-glow {
             background: linear-gradient(107deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.5) 100%), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
@@ -22,88 +21,64 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
             box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
-        .menu-card {
-            transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
-        }
-        .menu-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.2);
-        }
-        .method-card {
-            transition: all 0.2s ease;
-            border: 1px solid #e9e5de;
-            cursor: pointer;
-        }
-        .method-card.active {
-            border-color: #C27A3E;
-            background: #FEF7E6;
-            box-shadow: 0 4px 12px rgba(194, 122, 62, 0.1);
-        }
-        .modal-card {
-            animation: fadeSlideUp 0.3s ease-out;
-        }
-        @keyframes fadeSlideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .auto-close-toast {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: #2A2418;
-            color: #FFFAF0;
-            padding: 12px 24px;
-            border-radius: 40px;
-            z-index: 1000;
-            font-size: 14px;
-            font-weight: 500;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            animation: fadeInOut 2.2s ease;
-        }
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translateY(20px); }
-            15% { opacity: 1; transform: translateY(0); }
-            85% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(-20px); }
-        }
-        .marquee-text {
-            animation: marqueeAnim 22s linear infinite;
-            white-space: nowrap;
-            display: inline-block;
-        }
-        @keyframes marqueeAnim {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
+        .logo-fallback {
+            width: 40px;
+            height: 40px;
             background: #C27A3E;
-            margin: 10px auto 0;
-            border-radius: 2px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
         }
+        .menu-card { transition: all 0.4s cubic-bezier(0.2, 0, 0, 1); }
+        .menu-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.2); }
+        .method-card { transition: all 0.2s ease; border: 1px solid #e9e5de; cursor: pointer; }
+        .method-card.active { border-color: #C27A3E; background: #FEF7E6; box-shadow: 0 4px 12px rgba(194, 122, 62, 0.1); }
+        .modal-card { animation: fadeSlideUp 0.3s ease-out; }
+        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .auto-close-toast { position: fixed; bottom: 24px; right: 24px; background: #2A2418; color: #FFFAF0; padding: 12px 24px; border-radius: 40px; z-index: 1000; font-size: 14px; font-weight: 500; backdrop-filter: blur(8px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); animation: fadeInOut 2.2s ease; }
+        @keyframes fadeInOut { 0% { opacity: 0; transform: translateY(20px); } 15% { opacity: 1; transform: translateY(0); } 85% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-20px); } }
+        .marquee-text { animation: marqueeAnim 22s linear infinite; white-space: nowrap; display: inline-block; }
+        @keyframes marqueeAnim { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .section-title:after { content: ''; display: block; width: 60px; height: 3px; background: #C27A3E; margin: 10px auto 0; border-radius: 2px; }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- Dua logo pojokan + fallback jika gambar gagal load -->
             <div class="flex items-center gap-2">
-                <img src="https://i.ibb.co/SDRnxRcX/tkj-logo.jpg" alt="TKJ Logo" class="w-10 h-10 object-cover rounded-full border border-amber-200 shadow-sm" 
-                     onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=TKJ'">
-                <img src="https://i.ibb.co/6j3pj4S/pp-smkn.jpg" alt="SMKN Logo" class="w-10 h-10 object-cover rounded-full border border-amber-200 shadow-sm" 
-                     onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=SMKN'">
+                <!-- Logo TKJ dengan fallback ikon SVG jika gambar gagal -->
+                <img src="https://i.ibb.co/SDRnxRcX/tkj-logo.jpg" 
+                     alt="TKJ Logo" 
+                     class="w-10 h-10 object-cover rounded-full border border-amber-200 shadow-sm"
+                     crossorigin="anonymous"
+                     referrerpolicy="no-referrer"
+                     onerror="this.onerror=null; this.parentElement.insertBefore(this.nextElementSibling, this); this.style.display='none';"
+                     loading="eager">
+                <div class="logo-fallback hidden" style="background:#2A2418;">
+                    <svg class="w-5 h-5" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                </div>
+                <!-- Logo SMKN dengan fallback ikon -->
+                <img src="https://i.ibb.co/6j3pj4S/pp-smkn.jpg" 
+                     alt="SMKN Logo" 
+                     class="w-10 h-10 object-cover rounded-full border border-amber-200 shadow-sm"
+                     crossorigin="anonymous"
+                     referrerpolicy="no-referrer"
+                     onerror="this.onerror=null; this.parentElement.insertBefore(this.nextElementSibling, this); this.style.display='none';"
+                     loading="eager">
+                <div class="logo-fallback hidden" style="background:#5a3e2b;">
+                    <svg class="w-5 h-5" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /></svg>
+                </div>
                 <a href="#" class="text-2xl font-bold tracking-tight text-stone-800 font-serif ml-2">X TKJ 1</a>
             </div>
             <div class="hidden md:flex gap-8 text-stone-600 font-medium">
-                <a href="#menu" class="hover:text-amber-700 transition duration-200">Menu</a>
-                <a href="#kontak" class="hover:text-amber-700 transition duration-200">Kontak</a>
-                <button id="adminPanelBtn" class="hover:text-amber-700 transition duration-200">Admin</button>
+                <a href="#menu" class="hover:text-amber-700 transition">Menu</a>
+                <a href="#kontak" class="hover:text-amber-700 transition">Kontak</a>
+                <button id="adminPanelBtn" class="hover:text-amber-700 transition">Admin</button>
             </div>
             <button id="mobileMenuBtn" class="md:hidden text-stone-700">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" /></svg>
@@ -116,14 +91,12 @@
         </div>
     </nav>
 
-    <!-- Marquee Promo -->
     <div class="fixed top-[68px] w-full z-40 bg-stone-800/90 backdrop-blur-sm text-amber-50 py-2.5 overflow-hidden whitespace-nowrap text-sm tracking-wide shadow-md">
         <div class="marquee-text font-medium">
             <span class="mx-4">✦</span> Selamat datang di X TKJ 1 — Pesan online & dapatkan resi digital <span class="mx-4">✦</span> Promo: diskon 15% setiap Senin <span class="mx-4">✦</span> Free topping untuk pembelian 2 minuman
         </div>
     </div>
 
-    <!-- Hero Section (tetap foto AI) -->
     <section class="hero-glow h-screen flex items-center justify-center text-center text-white px-6 relative">
         <div class="absolute inset-0 bg-black/30"></div>
         <div class="max-w-3xl relative z-10">
@@ -134,17 +107,16 @@
         </div>
     </section>
 
-    <!-- Menu Section (sama seperti sebelumnya) -->
     <section id="menu" class="py-28 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-16">
             <span class="text-amber-700 uppercase tracking-[0.2em] text-sm font-semibold">— Signature Selection —</span>
             <h2 class="text-4xl md:text-5xl font-serif text-stone-800 mt-3 section-title">Menu Andalan</h2>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <!-- 6 menu items (sama persis, tidak diubah) -->
+            <!-- 6 menu items (gambar tetap dari unsplash yang stabil) -->
             <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 menu-card overflow-hidden border border-stone-100">
                 <div class="relative overflow-hidden h-72">
-                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Kopi Susu Senja" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/600x400?text=Kopi+Susu+Senja'">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Kopi Susu Senja" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=Kopi+Susu+Senja'">
                 </div>
                 <div class="p-6">
                     <div class="flex justify-between items-start">
@@ -159,7 +131,7 @@
             </div>
             <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 menu-card overflow-hidden border border-stone-100">
                 <div class="relative overflow-hidden h-72">
-                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80" alt="Iced Lychee Tea" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/600x400?text=Iced+Lychee+Tea'">
+                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80" alt="Iced Lychee Tea" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=Iced+Lychee+Tea'">
                 </div>
                 <div class="p-6">
                     <div class="flex justify-between items-start">
@@ -174,7 +146,7 @@
             </div>
             <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 menu-card overflow-hidden border border-stone-100">
                 <div class="relative overflow-hidden h-72">
-                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Matcha Latte" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/600x400?text=Matcha+Latte'">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Matcha Latte" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=Matcha+Latte'">
                 </div>
                 <div class="p-6">
                     <div class="flex justify-between items-start">
@@ -189,7 +161,7 @@
             </div>
             <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 menu-card overflow-hidden border border-stone-100">
                 <div class="relative overflow-hidden h-72">
-                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="French Croissant" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/600x400?text=French+Croissant'">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="French Croissant" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=French+Croissant'">
                 </div>
                 <div class="p-6">
                     <div class="flex justify-between items-start">
@@ -204,7 +176,7 @@
             </div>
             <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 menu-card overflow-hidden border border-stone-100">
                 <div class="relative overflow-hidden h-72">
-                    <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80" alt="Nasi Goreng Spesial" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/600x400?text=Nasi+Goreng+Spesial'">
+                    <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80" alt="Nasi Goreng Spesial" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=Nasi+Goreng+Spesial'">
                 </div>
                 <div class="p-6">
                     <div class="flex justify-between items-start">
@@ -219,7 +191,7 @@
             </div>
             <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 menu-card overflow-hidden border border-stone-100">
                 <div class="relative overflow-hidden h-72">
-                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80" alt="Classic Waffle" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/600x400?text=Classic+Waffle'">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80" alt="Classic Waffle" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=Classic+Waffle'">
                 </div>
                 <div class="p-6">
                     <div class="flex justify-between items-start">
@@ -235,7 +207,7 @@
         </div>
     </section>
 
-    <!-- MODAL PEMESANAN (sama persis, tidak berubah) -->
+    <!-- MODAL PEMESANAN (sama persis seperti sebelumnya) -->
     <div id="orderModal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-stone-900/50 backdrop-blur-md p-4 transition-all">
         <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl modal-card">
             <div class="p-6 lg:p-7">
@@ -301,7 +273,6 @@
         </div>
     </div>
 
-    <!-- ADMIN PANEL (sama) -->
     <div id="adminPanel" class="hidden fixed inset-0 z-[70] bg-stone-900/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white max-w-3xl w-full rounded-3xl p-6 modal-card max-h-[85vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b pb-3">
@@ -336,7 +307,6 @@
         // ======================= KONFIGURASI (TIDAK BERUBAH) =======================
         const BOT_TOKEN = '8540115519:AAHiN_82SRyDuLbQ8cYnAus3cler95AO6Fc';
         const DEFAULT_CHAT_ID = '7577331454';
-        
         let telegramChatId = localStorage.getItem('telegram_chat_id') || DEFAULT_CHAT_ID;
         let selectedMethod = 'qris';
         let currentItem = { name: '', price: 0 };
@@ -355,14 +325,8 @@
         const confirmOrderBtn = document.getElementById('confirmOrderBtn');
         const customerNameInput = document.getElementById('customerNameInput');
         
-        function generateOrderId() {
-            return 'TKJ-' + Date.now().toString(36).toUpperCase() + Math.floor(Math.random() * 1000);
-        }
-        
-        function updateTotalUI() {
-            const total = currentItem.price * currentQty;
-            totalSpan.innerText = `Rp ${total.toLocaleString('id-ID')}`;
-        }
+        function generateOrderId() { return 'TKJ-' + Date.now().toString(36).toUpperCase() + Math.floor(Math.random() * 1000); }
+        function updateTotalUI() { const total = currentItem.price * currentQty; totalSpan.innerText = `Rp ${total.toLocaleString('id-ID')}`; }
         
         async function sendTelegramNotification(order) {
             if (!telegramChatId) return;
@@ -370,196 +334,66 @@
             const customer = order.customerName || "Pelanggan";
             const message = `🆕 *PESANAN BARU* 🆕\n\n` +
                 `🍽️ *Hai ${customer}, ada pesanan nih dari ${customer}!* 🍽️\n\n` +
-                `📋 *No Pesanan:* ${order.id}\n` +
-                `👤 *Nama Pemesan:* ${customer}\n` +
-                `🍽 *Item:* ${order.item}\n` +
-                `🔢 *Jumlah:* ${order.qty}\n` +
-                `💰 *Total:* Rp ${order.total.toLocaleString('id-ID')}\n` +
-                `💳 *Metode:* ${order.method}\n` +
-                `⏰ *Waktu:* ${order.time}\n\n` +
+                `📋 *No Pesanan:* ${order.id}\n👤 *Nama Pemesan:* ${customer}\n🍽 *Item:* ${order.item}\n🔢 *Jumlah:* ${order.qty}\n💰 *Total:* Rp ${order.total.toLocaleString('id-ID')}\n💳 *Metode:* ${order.method}\n⏰ *Waktu:* ${order.time}\n\n` +
                 `Klik tombol di bawah untuk mengkonfirmasi pesanan ini.`;
-            const payload = {
-                chat_id: telegramChatId,
-                text: message,
-                parse_mode: 'Markdown',
-                reply_markup: {
-                    inline_keyboard: [[
-                        { text: '✅ Konfirmasi Pesanan', url: confirmUrl }
-                    ]]
-                }
-            };
-            try {
-                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-            } catch (err) { console.error(err); }
+            const payload = { chat_id: telegramChatId, text: message, parse_mode: 'Markdown', reply_markup: { inline_keyboard: [[{ text: '✅ Konfirmasi Pesanan', url: confirmUrl }]] } };
+            try { await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }); } catch (err) { console.error(err); }
         }
         
-        function saveOrder(order) {
-            orders.unshift(order);
-            localStorage.setItem('xtkj_orders', JSON.stringify(orders));
-            sendTelegramNotification(order);
-            renderOrdersList();
-        }
-        
+        function saveOrder(order) { orders.unshift(order); localStorage.setItem('xtkj_orders', JSON.stringify(orders)); sendTelegramNotification(order); renderOrdersList(); }
         function confirmOrderById(orderId, isAutoClose = true) {
             const idx = orders.findIndex(o => o.id === orderId);
             if (idx !== -1 && orders[idx].status !== 'confirmed') {
-                orders[idx].status = 'confirmed';
-                orders[idx].confirmedAt = new Date().toLocaleString();
-                localStorage.setItem('xtkj_orders', JSON.stringify(orders));
-                renderOrdersList();
-                showToast('✅ Pesanan dikonfirmasi!');
-                if (isAutoClose) {
-                    setTimeout(() => {
-                        window.close();
-                        if (!window.closed) {
-                            window.location.href = window.location.pathname;
-                        }
-                    }, 1500);
-                }
-            } else if (idx !== -1 && orders[idx].status === 'confirmed') {
-                showToast('Pesanan sudah dikonfirmasi sebelumnya.');
-                if (isAutoClose) setTimeout(() => window.close(), 1000);
-            } else {
-                showToast('Pesanan tidak ditemukan.');
-                if (isAutoClose) setTimeout(() => window.close(), 1000);
-            }
+                orders[idx].status = 'confirmed'; orders[idx].confirmedAt = new Date().toLocaleString(); localStorage.setItem('xtkj_orders', JSON.stringify(orders)); renderOrdersList(); showToast('✅ Pesanan dikonfirmasi!');
+                if (isAutoClose) setTimeout(() => { window.close(); if (!window.closed) window.location.href = window.location.pathname; }, 1500);
+            } else if (idx !== -1 && orders[idx].status === 'confirmed') { showToast('Pesanan sudah dikonfirmasi sebelumnya.'); if (isAutoClose) setTimeout(() => window.close(), 1000); }
+            else { showToast('Pesanan tidak ditemukan.'); if (isAutoClose) setTimeout(() => window.close(), 1000); }
         }
-        
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = 'auto-close-toast';
-            toast.innerText = message;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2200);
-        }
-        
+        function showToast(message) { const toast = document.createElement('div'); toast.className = 'auto-close-toast'; toast.innerText = message; document.body.appendChild(toast); setTimeout(() => toast.remove(), 2200); }
         function renderOrdersList() {
             const container = document.getElementById('ordersListContainer');
             if (!container) return;
-            if (orders.length === 0) {
-                container.innerHTML = '<p class="text-stone-400 text-sm">Belum ada pesanan.</p>';
-                return;
-            }
+            if (orders.length === 0) { container.innerHTML = '<p class="text-stone-400 text-sm">Belum ada pesanan.</p>'; return; }
             container.innerHTML = orders.map(order => {
                 let statusBadge = '', statusText = '';
-                if (order.status === 'confirmed') {
-                    statusBadge = 'bg-green-100 text-green-700';
-                    statusText = '✓ Diterima';
-                } else {
-                    statusBadge = 'bg-yellow-100 text-yellow-700';
-                    statusText = '⏳ Pending';
-                }
-                return `
-                    <div class="border rounded-lg p-3 bg-white shadow-sm">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <span class="font-mono text-sm font-bold">${order.id}</span>
-                                <span class="ml-2 text-xs px-2 py-0.5 rounded-full ${statusBadge}">${statusText}</span>
-                            </div>
-                            <span class="text-xs text-stone-400">${order.time}</span>
-                        </div>
-                        <p class="text-sm mt-1 font-medium text-stone-700">👤 ${order.customerName || 'Tidak ada nama'}</p>
-                        <p class="text-sm">${order.item} x${order.qty} - Rp ${order.total.toLocaleString('id-ID')}</p>
-                        <p class="text-xs text-stone-500">Metode: ${order.method}</p>
-                        ${order.status !== 'confirmed' ? `<button onclick="manualConfirm('${order.id}')" class="mt-2 text-xs bg-amber-600 text-white px-3 py-1 rounded-full">Konfirmasi Manual</button>` : ''}
-                    </div>
-                `;
+                if (order.status === 'confirmed') { statusBadge = 'bg-green-100 text-green-700'; statusText = '✓ Diterima'; }
+                else { statusBadge = 'bg-yellow-100 text-yellow-700'; statusText = '⏳ Pending'; }
+                return `<div class="border rounded-lg p-3 bg-white shadow-sm"><div class="flex justify-between items-start"><div><span class="font-mono text-sm font-bold">${order.id}</span><span class="ml-2 text-xs px-2 py-0.5 rounded-full ${statusBadge}">${statusText}</span></div><span class="text-xs text-stone-400">${order.time}</span></div><p class="text-sm mt-1 font-medium text-stone-700">👤 ${order.customerName || 'Tidak ada nama'}</p><p class="text-sm">${order.item} x${order.qty} - Rp ${order.total.toLocaleString('id-ID')}</p><p class="text-xs text-stone-500">Metode: ${order.method}</p>${order.status !== 'confirmed' ? `<button onclick="manualConfirm('${order.id}')" class="mt-2 text-xs bg-amber-600 text-white px-3 py-1 rounded-full">Konfirmasi Manual</button>` : ''}</div>`;
             }).join('');
         }
-        
         window.manualConfirm = function(id) { confirmOrderById(id, false); };
-        
         function finalizeOrder() {
             const customerNameRaw = customerNameInput ? customerNameInput.value.trim() : '';
-            if (customerNameRaw === '') {
-                alert('⚠️ Mohon isi nama pemesan terlebih dahulu agar kasir dapat menghubungi Anda.');
-                customerNameInput.focus();
-                return;
-            }
+            if (customerNameRaw === '') { alert('⚠️ Mohon isi nama pemesan terlebih dahulu agar kasir dapat menghubungi Anda.'); customerNameInput.focus(); return; }
             const total = currentItem.price * currentQty;
-            const newOrder = {
-                id: generateOrderId(),
-                customerName: customerNameRaw,
-                item: currentItem.name,
-                qty: currentQty,
-                total: total,
-                method: selectedMethod === 'qris' ? 'QRIS' : (selectedMethod === 'transfer' ? 'Transfer Bank' : 'Bayar di Tempat'),
-                time: new Date().toLocaleString(),
-                status: 'pending'
-            };
-            saveOrder(newOrder);
-            closeOrderModal();
-            showSuccessModal(newOrder);
+            const newOrder = { id: generateOrderId(), customerName: customerNameRaw, item: currentItem.name, qty: currentQty, total: total, method: selectedMethod === 'qris' ? 'QRIS' : (selectedMethod === 'transfer' ? 'Transfer Bank' : 'Bayar di Tempat'), time: new Date().toLocaleString(), status: 'pending' };
+            saveOrder(newOrder); closeOrderModal(); showSuccessModal(newOrder);
         }
-        
         function showSuccessModal(order) {
-            const modalDiv = document.createElement('div');
-            modalDiv.className = 'fixed inset-0 z-[80] bg-stone-900/60 backdrop-blur-sm flex items-center justify-center p-4';
-            modalDiv.innerHTML = `
-                <div class="bg-white max-w-md w-full rounded-2xl p-7 text-center modal-card">
-                    <div class="mx-auto flex items-center justify-center w-12 h-12 rounded-full bg-green-100 text-green-700 mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                    </div>
-                    <h3 class="text-2xl font-serif font-bold text-stone-800">Pesanan Diterima</h3>
-                    <div class="my-5 bg-stone-50 p-4 rounded-xl">
-                        <p class="text-xs text-stone-500 uppercase tracking-wide">Nomor Resi</p>
-                        <p class="text-2xl font-mono font-bold text-amber-800">${order.id}</p>
-                        <p class="text-sm mt-2">👤 ${order.customerName}</p>
-                        <p class="text-sm">${order.item} x${order.qty} | Total Rp ${order.total.toLocaleString('id-ID')}</p>
-                        <p class="text-xs text-stone-500 mt-1">Metode: ${order.method}</p>
-                    </div>
-                    <p class="text-sm text-stone-600">Notifikasi telah dikirim ke Telegram kasir. Silakan tunggu konfirmasi dari pihak cafe.</p>
-                    <button onclick="this.closest('.fixed').remove()" class="mt-6 w-full bg-stone-800 hover:bg-amber-800 text-white py-3 rounded-xl font-medium transition">Tutup</button>
-                </div>
-            `;
+            const modalDiv = document.createElement('div'); modalDiv.className = 'fixed inset-0 z-[80] bg-stone-900/60 backdrop-blur-sm flex items-center justify-center p-4';
+            modalDiv.innerHTML = `<div class="bg-white max-w-md w-full rounded-2xl p-7 text-center modal-card"><div class="mx-auto flex items-center justify-center w-12 h-12 rounded-full bg-green-100 text-green-700 mb-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></div><h3 class="text-2xl font-serif font-bold text-stone-800">Pesanan Diterima</h3><div class="my-5 bg-stone-50 p-4 rounded-xl"><p class="text-xs text-stone-500 uppercase tracking-wide">Nomor Resi</p><p class="text-2xl font-mono font-bold text-amber-800">${order.id}</p><p class="text-sm mt-2">👤 ${order.customerName}</p><p class="text-sm">${order.item} x${order.qty} | Total Rp ${order.total.toLocaleString('id-ID')}</p><p class="text-xs text-stone-500 mt-1">Metode: ${order.method}</p></div><p class="text-sm text-stone-600">Notifikasi telah dikirim ke Telegram kasir. Silakan tunggu konfirmasi dari pihak cafe.</p><button onclick="this.closest('.fixed').remove()" class="mt-6 w-full bg-stone-800 hover:bg-amber-800 text-white py-3 rounded-xl font-medium transition">Tutup</button></div>`;
             document.body.appendChild(modalDiv);
         }
-        
-        function openOrderModal(itemName, price) {
-            currentItem = { name: itemName, price: price };
-            currentQty = 1;
-            qtySpan.innerText = '1';
-            modalItemName.innerText = itemName;
-            orderNumberSpan.innerText = generateOrderId();
-            orderTimeSpan.innerText = new Date().toLocaleTimeString();
-            updateTotalUI();
-            if (customerNameInput) customerNameInput.value = '';
-            orderModal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
+        function openOrderModal(itemName, price) { currentItem = { name: itemName, price: price }; currentQty = 1; qtySpan.innerText = '1'; modalItemName.innerText = itemName; orderNumberSpan.innerText = generateOrderId(); orderTimeSpan.innerText = new Date().toLocaleTimeString(); updateTotalUI(); if (customerNameInput) customerNameInput.value = ''; orderModal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
         function closeOrderModal() { orderModal.classList.add('hidden'); document.body.style.overflow = ''; }
         function closeAdminPanel() { adminPanel.classList.add('hidden'); }
         
         decrementBtn.addEventListener('click', () => { if (currentQty > 1) { currentQty--; qtySpan.innerText = currentQty; updateTotalUI(); } });
         incrementBtn.addEventListener('click', () => { currentQty++; qtySpan.innerText = currentQty; updateTotalUI(); });
-        
-        document.querySelectorAll('[data-method]').forEach(el => {
-            el.addEventListener('click', () => {
-                document.querySelectorAll('[data-method]').forEach(c => c.classList.remove('active', 'border-amber-500', 'bg-amber-50'));
-                el.classList.add('active', 'border-amber-500', 'bg-amber-50');
-                selectedMethod = el.getAttribute('data-method');
-            });
-        });
+        document.querySelectorAll('[data-method]').forEach(el => { el.addEventListener('click', () => { document.querySelectorAll('[data-method]').forEach(c => c.classList.remove('active', 'border-amber-500', 'bg-amber-50')); el.classList.add('active', 'border-amber-500', 'bg-amber-50'); selectedMethod = el.getAttribute('data-method'); }); });
         confirmOrderBtn.addEventListener('click', finalizeOrder);
-        
         document.getElementById('adminPanelBtn')?.addEventListener('click', () => { renderOrdersList(); adminPanel.classList.remove('hidden'); });
         document.getElementById('mobileAdminBtn')?.addEventListener('click', () => { renderOrdersList(); adminPanel.classList.remove('hidden'); });
-        
-        const urlParams = new URLSearchParams(window.location.search);
-        const confirmId = urlParams.get('confirm');
-        if (confirmId && urlParams.get('action') === 'confirm') {
-            confirmOrderById(confirmId, true);
-        }
-        
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileDropdown = document.getElementById('mobileDropdown');
+        const urlParams = new URLSearchParams(window.location.search); const confirmId = urlParams.get('confirm');
+        if (confirmId && urlParams.get('action') === 'confirm') confirmOrderById(confirmId, true);
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn'); const mobileDropdown = document.getElementById('mobileDropdown');
         mobileMenuBtn?.addEventListener('click', () => mobileDropdown.classList.toggle('hidden'));
-        
         renderOrdersList();
+        
+        // Perbaikan fallback logo: tampilkan ikon SVG jika gambar gagal
+        document.querySelectorAll('img[onerror]').forEach(img => {
+            if (img.complete && img.naturalWidth === 0) img.onerror();
+        });
     </script>
 </body>
 </html>
